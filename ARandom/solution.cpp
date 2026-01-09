@@ -1,36 +1,26 @@
-#include <iostream>
-#include <vector>
-#include <math.h>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-int search(vector<int>& nums, int target) {
-    int st = 0, end = nums.size() - 1;
-    while(st <= end){
-        int mid = st + (end-st)/2;
-        if(nums[mid] == target){
-            return mid;
+void solution(vector<vector<int>> mat){
+    int ans = 0;
+    for(int i = 0; i < mat[0].size(); i++){
+        for(int j = 0; j < mat.size(); j++){
+            ans+=mat[j][i];
         }
-        if(nums[st] <= nums[mid]){
-            if(nums[st] <= target && target <= nums[mid]){
-                end = mid - 1;
-            }else{
-                st = mid+1;
-            }
-        }else{
-            if(nums[mid] <= target && target <= nums[end]){
-                st = mid + 1;
-            }else{
-                end = mid - 1;
-            }
-        }
+        cout << ans << endl;
+        ans = 0;
     }
-    return -1;
+
 }
 
 
 int main()
 {
-    int n = 2451325;
-    cout << (int) log10(n) + 1 << endl;
+    vector<vector<int>> mat = {
+        { 1, 2, 3, 4, 5 },
+        { 6, 7, 8, 9, 10},
+        { 11, 12, 13, 14, 15}
+    };
+    solution(mat);
 }
